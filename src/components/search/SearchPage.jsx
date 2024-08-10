@@ -18,11 +18,11 @@ function SearchPage() {
         variables: { title_contains: searchQuery }
     });
 
-    if (loading) return <Box component="div" sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "60vh" }}><Loader /></Box>
+    // if (loading) return 
 
     if (error) return <h1>مشکلی پیش آمد</h1>
 
-    
+
     const searchHandler = () => {
         setSearchParam({ q: searchValue })
     }
@@ -57,8 +57,9 @@ function SearchPage() {
                     </Grid>
                 </Grid>
             </Box>
+            {loading && <Box component="div" sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "60vh" }}><Loader /></Box>}
             {
-                (!data.posts || !data.posts.length) ? <h1>پستی با همچین عنوانی پیدا نشد.</h1> : (
+                (!loading && (!data?.posts || !data?.posts?.length)) ? <h1>پستی با همچین عنوانی پیدا نشد.</h1> : (
                     <Grid container mt={5}>
                         <Box component="div">
                             <Typography component="h3" variant="h6" fontWeight={400}>
