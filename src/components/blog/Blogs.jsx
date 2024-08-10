@@ -21,8 +21,6 @@ function Blogs() {
 
     if (error) return <h2>مشکلی پیش اومده! دوباره امتحان کنین:)</h2>
 
-    console.log(new Date(data.posts[0].createdAt).getDay());
-
     if (data) {
         return <Grid container spacing={1}>
             {data.posts.map(post => (

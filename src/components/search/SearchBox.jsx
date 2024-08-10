@@ -1,24 +1,27 @@
 import { useLazyQuery, useQuery } from '@apollo/client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GET_SEARCHED_POSTS } from '../../graphql/queries'
 import { Box, Button, TextField, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import "../../styles/index.css"
+import { useNavigate } from 'react-router';
 
 
 function SearchBox() {
 
-    const [searchValue, setSearchValue] = useState("")
-    const [showModal, setShowModal] = useState(false)
+    const [searchValue, setSearchValue] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [getSearch, { loading, data, error }] = useLazyQuery(GET_SEARCHED_POSTS);
+    const [searchedProducts, setSearchedProducts] = useState([])
 
+    
 
-    const [getSearch, { loading, data, error }] = useLazyQuery(GET_SEARCHED_POSTS)
+    const navigate = useNavigate()
+
+    
+
     const searchHandler = () => {
-        console.log(searchValue)
-        getSearch({
-            variables: { title_contains: searchValue }
-        });
-        console.log({ loading, data, error });
+        navigate(`/search?q=${searchValue}`)
     }
 
 
@@ -89,16 +92,28 @@ function SearchBox() {
                             borderRadius: "8px",
                             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
                             width: "400px",
+                            height: "80px",
                             boxSizing: "border-box",
                             textAlign: "center",
                         }}
                     >
-                        <Box component="div" sx={{ marginBottom: "20px" }} >
-                            <TextField fullWidth variant="outlined" label="چیزی بنویسید..." size="small" onChange={e => setSearchValue(e.target.value)} />
+                        <Box component="div" sx={{ display: "flex", justifyContent: "center" }}>
+
+                            <TextField fullWidth variant="outlined" label="چیزی بنویسید.." size="small" onChange={e => setSearchValue(e.target.value)} />
+
+                            <Button variant="contained" color="primary" sx={{ height: "40px", mr: 2 }} onClick={searchHandler}>
+                                جستجو
+                            </Button>
+
                         </Box>
-                        <Button variant="contained" color="primary" onClick={searchHandler}>
-                            جستجو
-                        </Button>
+                        {searchedProducts.length ?
+                            <Box component="div">
+                                {
+                                    data.map(post => <p>post</p>)
+                                }
+                            </Box>
+                            : null
+                        }
                     </Box>
 
                 </Box>

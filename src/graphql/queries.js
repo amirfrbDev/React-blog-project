@@ -92,7 +92,20 @@ const GET_POST_COMMENTS = gql`
 const GET_SEARCHED_POSTS = gql`
 query getSearchedPosts($title_contains:String!) {
   posts(where: {title_contains:$title_contains}){
-    title
+            author {
+                 name,
+                slug
+                avatar {
+                    url
+                }
+            },
+            id,
+            title,
+            slug,
+            dataPublished
+            coverPhoto {
+                url
+            }
   }
 }
 `
