@@ -44,6 +44,7 @@ function AuthorPage() {
                                 <CardElem title={post.title} slug={post.slug} coverPhoto={post.coverPhoto} />
                             </Grid>
                         ))}
+                        {!post.length && <Typography component="h3" variant='subtitle1' m="auto" mt={5} p={2} sx={{backgroundColor:"#bbbbbb", borderRadius:3}}>برای این نویسنده مقاله‌ای موجود نیست!</Typography> }
                     </Grid>
                 </Grid>
             </Grid>

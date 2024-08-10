@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import CommentForm from '../comment/CommentForm';
 import Comments from '../comment/Comments';
+import NotFoundPage from '../404/404';
 
 
 function BlogPage() {
@@ -16,6 +17,7 @@ function BlogPage() {
     const { slug } = useParams();
 
     const navigate = useNavigate();
+
 
     const { loading, data, error } = useQuery(GET_POST, {
         variables: { slug }
@@ -29,9 +31,7 @@ function BlogPage() {
 
     if (error) return <h2>مشکلی پیش اومده! دوباره امتحان کنین:)</h2>
 
-    console.log(data.post.author.name)
 
-    console.log(data.post.author.slug)
     return (
         <Container maxWidth="lg">
             <Grid container>
@@ -45,12 +45,14 @@ function BlogPage() {
                     <img src={data.post.coverPhoto.url} alt={data.post.slug} width="100%" style={{ borderRadius: 15 }} />
                 </Grid>
                 <Grid item xs={12} mt={7} display="flex" alignItems="center">
-                    <Avatar
-                        src={data.post.author.avatar.url}
-                        sx={{ width: 80, height: 80, marginLeft: 2 }}
-                    />
+                    <Link to={`/authors/${data.post.author.slug}`} style={{ textDecoration: "none", color: "black", cursor: "pointer" }}>
+                        <Avatar
+                            src={data.post.author.avatar.url}
+                            sx={{ width: 80, height: 80, marginLeft: 2 }}
+                        />
+                    </Link>
                     <Box component="div">
-                        <Link to={`/authors/${data.post.author.slug}`} style={{ textDecoration: "none", color: "black", cursor:"pointer" }}>
+                        <Link to={`/authors/${data.post.author.slug}`} style={{ textDecoration: "none", color: "black", cursor: "pointer" }}>
                             <Typography component="p" variant='h5' fontWeight={700} >
                                 {data.post.author.name}
                             </Typography>
@@ -71,6 +73,7 @@ function BlogPage() {
                 </Grid>
             </Grid>
         </Container >
+
     )
 }
 

@@ -14,7 +14,7 @@ function Header() {
                             وبلاگ من
                         </Link>
                     </Typography>
-                    <BookIcon />
+                    <Link to="blogs" style={{color:"white"}}><BookIcon /></Link>
                 </Toolbar>
             </Container>
         </AppBar>

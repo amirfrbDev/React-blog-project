@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { Button, Grid, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { SEND_COMMENT } from '../../graphql/mutations'
@@ -16,8 +16,6 @@ function CommentForm({ slug }) {
             name: userName, email, text: commentText, slug
         }
     });
-
-    console.log({ loading, data, error })
 
     const sendHandler = () => {
         if (userName && email && commentText) {
@@ -38,6 +36,7 @@ function CommentForm({ slug }) {
         }
     }
 
+
     return (
         <Grid container sx={{ boxShadow: "rgba(0,0,0,0.1) 0px 4px 12px", borderRadius: 4, py: 1, mt: 5 }}>
             <Grid item xs={12} m={2}>
@@ -52,6 +51,7 @@ function CommentForm({ slug }) {
                         sx={{ width: "100%" }}
                         onChange={e => setUserName(e.target.value)} />
                 </div>
+                
             </Grid>
             <Grid item xs={12} m={2}>
                 <TextField
@@ -74,11 +74,13 @@ function CommentForm({ slug }) {
             <Grid item xs={12} m={2}>
                 {loading ? <Button variant='contained' disabled>در حال ارسال...</Button> :
                     <Button variant="contained" onClick={sendHandler}>ارسال</Button>
-                }
-            </Grid>
+                }                                                                   
+            </Grid>                     
             <ToastContainer />
+            
         </Grid>
     )
+    
 }
 
 export default CommentForm

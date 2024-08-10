@@ -9,5 +9,6 @@ export default defineConfig(({ mode }) => {
       'process.env.REACT_APP_GRAPHCMS_URI': JSON.stringify(env.SOME_KEY)
     },
     plugins: [react()],
+    server:{port:8080}
   }
 })

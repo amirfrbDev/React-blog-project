@@ -13,6 +13,7 @@ const GET_BLOGS_INFO = gql`
             id,
             title,
             slug,
+            dataPublished
             coverPhoto {
                 url
             }
@@ -86,6 +87,14 @@ const GET_POST_COMMENTS = gql`
             text
         }
     }
+`;
+
+const GET_SEARCHED_POSTS = gql`
+query getSearchedPosts($title_contains:String!) {
+  posts(where: {title_contains:$title_contains}){
+    title
+  }
+}
 `
 
 
@@ -94,5 +103,6 @@ export {
     GET_AUTHORS_INFO,
     GET_AUTHOR,
     GET_POST,
-    GET_POST_COMMENTS
+    GET_POST_COMMENTS,
+    GET_SEARCHED_POSTS
 }

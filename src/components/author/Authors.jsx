@@ -14,7 +14,7 @@ function Authors() {
   const { authors } = data
 
   return (
-    <Grid container sx={{ boxShadow: "rgba(0,0,0,0.1) 0 4px 12px", borderRadius: 4 }} mt={4}>
+    <Grid container sx={{ boxShadow: "rgba(0,0,0,0.1) 0 4px 12px", borderRadius: 4 }} mt={0}>
       {authors.map((author, index) => (
         <React.Fragment key={author.id}>
           <Grid item xs={12} padding={2}>
