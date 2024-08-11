@@ -1,7 +1,6 @@
 import React from 'react'
 import { GET_BLOGS_INFO } from '../../graphql/queries'
 import { useQuery } from '@apollo/client';
-import { RotatingLines } from 'react-loader-spinner';
 import { Grid } from '@mui/material';
 import CardElem from '../shared/CardElem';
 import Loader from '../shared/Loader';

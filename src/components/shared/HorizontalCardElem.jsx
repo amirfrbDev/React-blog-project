@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardHeader, Container, Grid, Typography, CardMedia } from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography, CardMedia } from '@mui/material';
 import { convertDate } from '../../helpers/dateConverter';
 import { convertTime } from '../../helpers/timeConverter';
 import { Link } from 'react-router-dom';

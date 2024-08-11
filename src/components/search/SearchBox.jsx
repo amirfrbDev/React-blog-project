@@ -1,5 +1,5 @@
 import { useLazyQuery, useQuery } from '@apollo/client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { GET_SEARCHED_POSTS } from '../../graphql/queries'
 import { Box, Button, TextField, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';

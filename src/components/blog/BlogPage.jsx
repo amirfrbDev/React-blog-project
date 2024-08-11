@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import CommentForm from '../comment/CommentForm';
 import Comments from '../comment/Comments';
-import NotFoundPage from '../404/404';
 import { tagExtractor } from '../../helpers/tagsExtractor';
 
 

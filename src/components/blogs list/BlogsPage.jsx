@@ -1,10 +1,8 @@
 import { useQuery } from '@apollo/client'
 import React, { useState } from 'react'
-import { GET_BLOGS_INFO, GET_TEN_POSTS_PER_PAGE } from '../../graphql/queries'
-import { Box, Card, CardContent, CardHeader, Container, Grid, Typography, CardMedia, Button, TextField } from '@mui/material';
-import { convertDate } from '../../helpers/dateConverter';
-import { convertTime } from '../../helpers/timeConverter';
-import { Link, useNavigate } from 'react-router-dom';
+import {  GET_TEN_POSTS_PER_PAGE } from '../../graphql/queries'
+import { Box, Container, Grid, Typography, Button, TextField } from '@mui/material';
+import {  useNavigate } from 'react-router-dom';
 import ArrowLeftRoundedIcon from '@mui/icons-material/ArrowLeftRounded';
 import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
