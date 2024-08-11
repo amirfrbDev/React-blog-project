@@ -16,7 +16,8 @@ const GET_BLOGS_INFO = gql`
             dataPublished
             coverPhoto {
                 url
-            }
+            },
+            
         }
     }
 `;
@@ -74,7 +75,8 @@ const GET_POST = gql`
             coverPhoto {
                 url
             }
-            title
+            title,
+            tags
         }
     }
 `
@@ -90,8 +92,8 @@ const GET_POST_COMMENTS = gql`
 `;
 
 const GET_SEARCHED_POSTS = gql`
-query getSearchedPosts($title_contains:String!) {
-  posts(where: {title_contains:$title_contains}){
+query getSearchedPosts($tags_contains:String!) {
+    posts(where: {tags_contains:$tags_contains}) {
             author {
                  name,
                 slug
@@ -110,6 +112,53 @@ query getSearchedPosts($title_contains:String!) {
 }
 `
 
+const GET_LAST_N_POSTS = gql`
+    query MyQuery {
+        posts(first: 5) {
+            author {
+                 name,
+                slug
+                avatar {
+                    url
+                }
+            },
+            id,
+            title,
+            slug,
+            dataPublished
+            coverPhoto {
+                url
+            }
+        }
+    }
+`;
+
+const GET_TEN_POSTS_PER_PAGE = gql`
+    query getPostsPerPage($first:Int!, $skip:Int!) {
+        posts(first: $first, skip: $skip) {
+            author {
+                name,
+                slug
+                avatar {
+                    url
+                }
+            },
+            id,
+            title,
+            slug,
+            dataPublished
+            coverPhoto {
+                url
+            },
+        }
+        postsConnection {
+            aggregate {
+            count
+            }
+        }
+}
+`
+
 
 export {
     GET_BLOGS_INFO,
@@ -117,5 +166,7 @@ export {
     GET_AUTHOR,
     GET_POST,
     GET_POST_COMMENTS,
-    GET_SEARCHED_POSTS
+    GET_SEARCHED_POSTS,
+    GET_LAST_N_POSTS,
+    GET_TEN_POSTS_PER_PAGE
 }

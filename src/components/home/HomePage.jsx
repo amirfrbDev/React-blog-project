@@ -11,7 +11,6 @@ function HomePage() {
 
     <Container maxWidth="lg">
       <Grid container spacing={2} padding={3}>
-
         <Grid item xs={12} md={4} mt={4}>
           <Grid container direction="column" spacing={2} mt={7.4}> {/* Column Layout */}
             <Grid item xs={12}>

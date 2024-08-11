@@ -14,6 +14,8 @@ function Blogs() {
 
     const { loading, data, error } = useQuery(GET_BLOGS_INFO)
 
+    console.log({loading,data,error});
+
 
     if (loading) return <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <Loader />
